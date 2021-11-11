@@ -78,7 +78,7 @@ class PlatformSH
       return nil
     end
     
-    upstreams = PlatformSH::config["routes"].select {|k,v| v["type"]=="upstream"}
+    upstreams = PlatformSH::config["routes"].select {|k,v| v["type"]=="upstream" && v["upstream"] == PlatformSH::config["application_name"]}
     begin 
     if upstreams.length > 1
       $logger.info "More than one upstream. Picking first in list."
